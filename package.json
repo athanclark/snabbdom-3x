@@ -27,11 +27,10 @@
   "types": "build/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "tsc && npm run bundle:cjs",
+    "build": "ls -lah src/ && tsc -p ./tsconfig.json && ls -lah build/ && npm run bundle:cjs",
     "bundle:cjs": "rollup build/index.js --format cjs --file build/snabbdom.cjs.js",
     "examples": "serve .",
     "format": "prettier --write .",
-    "prepare": "husky install",
     "lint": "eslint --ext .ts,.tsx,.js --ignore-path .gitignore .",
     "unit": "cross-env FILES_PATTERN=\"test/unit/*.ts,test/unit/*.tsx\" karma start karma.conf.js",
     "benchmark": "cross-env FILES_PATTERN=\"test-bundles/benchmark/**/*.js\" karma start karma.conf.cjs --concurrency=1",
